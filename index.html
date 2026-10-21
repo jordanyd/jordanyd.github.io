@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noimageindex">
+<title>Jordan Weide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Jordan Weide: researcher in applied linguistics, language assessment, and LLM evaluation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long scholarly page; fixed navy nav; sections on a single 72rem column, alternating plain and tinted bands. */
+:root{
+  --bg:#F5F7FB; --band:#E9EEF6; --surface:#FFFFFF; --ink:#0F1E36; --muted:#4D5B73;
+  --navy:#13294B; --accent:#3D63C4; --rule:#CCD5E3; --on-navy:#F1F4FA;
+  --f-display:"Spectral", "Iowan Old Style", Georgia, serif;
+  --f-body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --w:72rem; --nav-h:3.5rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1424; --band:#101C31; --surface:#15233C; --ink:#E6EBF5; --muted:#A3B0C6;
+  --navy:#0A1830; --accent:#93AEF0; --rule:#26375A; --on-navy:#E6EBF5; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1424; --band:#101C31; --surface:#15233C; --ink:#E6EBF5; --muted:#A3B0C6;
+  --navy:#0A1830; --accent:#93AEF0; --rule:#26375A; --on-navy:#E6EBF5; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 1rem)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+.wrap{max-width:var(--w);margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.label{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--navy);color:var(--on-navy)}
+.nav .wrap{display:flex;align-items:center;gap:1.5rem;min-height:var(--nav-h)}
+.brand{font:500 1.15rem var(--f-display);color:var(--on-navy);text-decoration:none;white-space:nowrap}
+.nav ul{display:flex;gap:1.1rem;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{color:var(--on-navy);opacity:.82;text-decoration:none;font-size:.86rem;white-space:nowrap;padding-block:.4rem;display:block}
+.nav ul a:hover{opacity:1}
+.nav ul a.ext{opacity:1;border-bottom:1px solid currentColor}
+
+/* hero */
+.hero{padding-block:clamp(3rem,8vw,6rem) clamp(2.5rem,6vw,4.5rem)}
+.hero .hero-tags{margin-top:1.1rem;font-size:.8rem}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:400;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.annot{margin-top:2rem;font:400 clamp(1.15rem,2.4vw,1.45rem)/2.6 var(--f-display);max-width:46rem}
+.fe{position:relative;display:inline;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+.fe::after{content:attr(data-fe);position:absolute;left:0;top:100%;margin-top:3px;font:500 .62rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.annot-note{margin-top:.75rem;font:400 .78rem var(--f-mono);color:var(--muted)}
+.lede{margin-top:2rem;max-width:40rem;font-size:1.08rem;color:var(--muted)}
+.markers{margin-top:2.5rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem 2rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+.markers div{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.markers strong{font-weight:500;font-size:.95rem}
+@media (max-width:760px){.markers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sections */
+section.block{padding-block:clamp(3rem,7vw,5rem)}
+section.tint{background:var(--band)}
+.sec-head{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.25rem;max-width:44rem}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+.sec-head h2 em{font-style:italic}
+.sec-head p{color:var(--muted)}
+
+/* research themes */
+.themes{margin-top:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem 2rem}
+.theme{display:flex;flex-direction:column;gap:.5rem;border-top:2px solid var(--navy);padding-top:1rem}
+:root[data-theme="dark"] .theme{border-top-color:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme{border-top-color:var(--accent)}}
+.theme h3{font-size:1.15rem}
+.theme p{font-size:.92rem}
+.theme p{color:var(--muted)}
+@media (max-width:900px){.themes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.themes{grid-template-columns:1fr}}
+
+/* projects */
+.projects{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+details.proj{border-bottom:1px solid var(--rule)}
+details.proj summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:7.5rem minmax(0,1fr) auto;gap:1.5rem;align-items:baseline;padding-block:1.4rem}
+details.proj summary::-webkit-details-marker{display:none}
+details.proj summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.proj h3{font-size:1.35rem}
+.proj .sub{color:var(--muted);margin-top:.35rem;max-width:44rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.tag{font:400 .72rem var(--f-mono);padding:.15rem .5rem;border:1px solid var(--rule);border-radius:3px;color:var(--muted)}
+.toggle{font:500 1.4rem var(--f-mono);color:var(--accent);transition:transform .2s}
+details[open] .toggle{transform:rotate(45deg)}
+.proj-body{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1.5rem;padding-bottom:2rem}
+.proj-body > div{grid-column:2;display:flex;flex-direction:column;gap:1.25rem;max-width:46rem;min-width:0}
+.proj-body h4{font:500 .72rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem}
+.proj-body figure{margin:0;max-width:30rem}
+.proj-body figcaption{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+.pill{display:inline-block;font:500 .66rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:.15rem .5rem;border-radius:3px;background:var(--navy);color:var(--on-navy);margin-bottom:.5rem}
+.pill.review{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.pill.quiet{background:transparent;color:var(--muted);border:1px solid var(--rule)}
+.proj-body .cite{font-family:var(--f-display);font-size:1.05rem;line-height:1.55}
+.proj-body .cite + .cite{margin-top:.75rem}
+.proj-body .cite b{font-weight:600}
+.proj-body .cite a{font:400 .78rem var(--f-mono);word-break:break-all}
+.record{margin-top:2rem}
+.status{display:inline-block;font:500 .7rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:.15rem .5rem;border-radius:3px;background:var(--navy);color:var(--on-navy)}
+@media (max-width:700px){
+  details.proj summary{grid-template-columns:minmax(0,1fr) auto;gap:.5rem 1rem}
+  details.proj summary .label{grid-column:1 / -1}
+  .proj-body{grid-template-columns:1fr}.proj-body > div{grid-column:1}
+}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.6rem;max-width:52rem}
+.pubs li{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:1.25rem}
+.pubs .yr{font:500 .95rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.pubs .cite{font-family:var(--f-display);font-size:1.12rem;line-height:1.5}
+.pubs .cite b{font-weight:600}
+.pubs .meta{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;margin-top:.45rem;font:400 .8rem var(--f-mono)}
+.pubs .meta a{word-break:break-all}
+
+/* presentations */
+.talks{display:flex;flex-direction:column;gap:3.5rem}
+.talk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2.5rem;align-items:start}
+.talk-text{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.talk h3{font-size:1.4rem}
+.talk .where{font:400 .82rem var(--f-mono);color:var(--muted)}
+.talk p{color:var(--muted)}
+.gallery{display:grid;gap:.5rem;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:7.5rem}
+.gallery button{padding:0;border:0;background:var(--band);cursor:zoom-in;overflow:hidden;border-radius:3px;min-width:0}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.gallery button:hover img{transform:scale(1.03)}
+.g-wide{grid-column:span 4;grid-row:span 2}
+.g-half{grid-column:span 3;grid-row:span 2}
+.g-side{grid-column:span 2;grid-row:span 2}
+.g-sm{grid-column:span 2}
+.venues{list-style:none;margin:.4rem 0 0;display:flex;flex-direction:column;gap:.9rem;border-left:2px solid var(--accent);padding:0 0 0 1rem}
+.venues li{display:flex;flex-direction:column;gap:.15rem}
+.venues strong{font-weight:600;font-size:.95rem}
+.venues span{font:400 .8rem var(--f-mono);color:var(--muted)}
+.talks-more{margin-top:3rem;border-top:1px solid var(--rule);padding-top:1.5rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 3rem}
+.talks-more div{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.talks-more h3{font-size:1.15rem}
+@media (max-width:820px){.talk{grid-template-columns:1fr;gap:1.25rem}.talks-more{grid-template-columns:1fr}.gallery{grid-auto-rows:5.5rem}}
+
+/* writing */
+.papers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.paper{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.5rem;display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.paper.lead{grid-column:1 / -1;border-color:var(--navy);display:block}
+.paper.lead .stack{display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.paper h3{font-size:1.25rem}
+.paper.lead h3{font-size:1.6rem}
+.paper p{color:var(--muted);font-size:.95rem}
+.paper .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:.5rem}
+.btn{font:500 .85rem var(--f-body);background:var(--navy);color:var(--on-navy);border:0;border-radius:3px;padding:.55rem 1rem;cursor:pointer}
+:root[data-theme="dark"] .btn{background:var(--accent);color:#0B1424}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{background:var(--accent);color:#0B1424}}
+.btn:hover{filter:brightness(1.12)}
+.thumb{border:1px solid var(--rule);border-radius:2px;overflow:hidden;align-self:start;cursor:pointer;background:#fff;padding:0}
+.lang{font:500 .7rem var(--f-mono);color:var(--muted)}
+@media (max-width:980px){.papers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.papers{grid-template-columns:1fr}.paper.lead{grid-template-columns:1fr}.paper.lead .thumb{display:none}}
+
+/* development */
+.courses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem;border-top:1px solid var(--rule)}
+.course{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;padding-block:1.4rem;border-bottom:1px solid var(--rule)}
+.course .when{font:500 .8rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.25rem}
+.course h3{font:600 1rem var(--f-body)}
+.course .org{color:var(--muted);font-size:.9rem}
+.course .tags{margin-top:.6rem}
+.subhead{margin-top:3.5rem;margin-bottom:1.25rem;font-size:1.5rem}
+.events{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem}
+.event{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.event button{padding:0;border:0;background:var(--band);cursor:zoom-in;aspect-ratio:4/5;overflow:hidden;border-radius:3px;max-width:100%}
+.event img{width:100%;height:100%;object-fit:cover}
+.event h3{font:600 .92rem var(--f-body)}
+.event p{font:400 .76rem var(--f-mono);color:var(--muted)}
+.lists{margin-top:3rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 3rem}
+.lists ul{margin:.75rem 0 0;padding-left:1.1rem;color:var(--muted)}
+.lists li{margin-bottom:.3rem}
+@media (max-width:1000px){.events{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.events{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.courses,.lists{grid-template-columns:1fr}}
+
+/* insights */
+.soon{border:1px dashed var(--rule);border-radius:4px;padding:2rem;max-width:44rem;display:flex;flex-direction:column;gap:.6rem}
+.soon h3{font-size:1.4rem}
+.soon p{color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:3.5rem;align-items:center}
+.portrait{border-radius:4px;overflow:hidden;aspect-ratio:9/10.6;max-width:100%}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.facts{display:flex;flex-direction:column;gap:1rem}
+.facts div{display:flex;flex-direction:column;gap:.2rem}
+.narr{display:flex;flex-direction:column;gap:1.1rem;font-size:1.05rem;max-width:46rem}
+.narr p:first-child{font:400 1.25rem/1.55 var(--f-display)}
+.contact{margin-top:2rem;display:flex;flex-direction:column;gap:.85rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+.contact .row{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;align-items:center}
+.email{font:500 1rem var(--f-mono);user-select:all}
+.copy{font:500 .75rem var(--f-mono);background:none;border:1px solid var(--rule);color:var(--ink);border-radius:3px;padding:.25rem .6rem;cursor:pointer}
+.li-callout{background:var(--navy);color:var(--on-navy);border-radius:4px;padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-top:1.5rem}
+.li-callout a{color:var(--on-navy);font-weight:600}
+@media (max-width:820px){.about{grid-template-columns:1fr;gap:2rem}.portrait{max-width:22rem}}
+
+footer{background:var(--navy);color:var(--on-navy)}
+footer .wrap{padding-block:2rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font:400 .8rem var(--f-mono);opacity:.85}
+footer a{color:var(--on-navy)}
+
+/* overlays */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(6,12,24,.92);display:flex;flex-direction:column}
+.ov-bar{display:flex;align-items:center;gap:1rem;color:#F1F4FA;padding:calc(.75rem + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) .75rem max(16px, env(safe-area-inset-left, 0px))}
+.ov-bar .t{font:500 1rem var(--f-display);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ov-bar .c{font:400 .78rem var(--f-mono);opacity:.75;white-space:nowrap}
+.ov-close,.ov-nav{background:none;border:1px solid rgba(241,244,250,.35);color:#F1F4FA;border-radius:3px;font:500 .85rem var(--f-mono);padding:.35rem .7rem;cursor:pointer}
+.reader{flex:1;overflow-y:auto;padding:0 max(16px, env(safe-area-inset-right, 0px)) calc(2rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));-webkit-user-select:none;user-select:none}
+.reader .pg{max-width:52rem;margin:0 auto 1rem;background:#fff;aspect-ratio:8.5/11;box-shadow:0 2px 14px rgba(0,0,0,.35)}
+.reader img{width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+.lb-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:0 max(16px, env(safe-area-inset-right, 0px)) calc(1.5rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));min-height:0}
+.lb-stage img{max-height:100%;max-width:100%;object-fit:contain}
+.lb-cap{color:#F1F4FA;text-align:center;font:400 .85rem var(--f-body);padding:0 1rem calc(1rem + env(safe-area-inset-bottom, 0px))}
+</style>
+
+</head>
+<body>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Jordan Weide</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects &amp; Publications</a></li>
+      <li><a href="#presentations">Presentations</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#development">Development</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a class="ext" href="https://www.linkedin.com/in/jordanweide" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Jordan Weide</h1>
+    <p class="label hero-tags">Applied Linguistics · LLM Evaluation · Language Assessment</p>
+    <p class="lede">I am an interdisciplinary researcher working across academia and industry. I believe language has the power to shape and facilitate agency and access in people's lives, and AI reflects that same nature. I study how interactional dynamics shape model behavior, and I bring the validity concerns of language assessment to the evaluation of AI.</p>
+  </div>
+</header>
+
+<section class="block tint" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Research statement</span>
+      <h2>Interaction as a <em>site of evidence</em></h2>
+    </div>
+    <div class="narr">
+      <p>Large language models have moved beyond static repositories of knowledge to become interactive systems capable of simulating purposeful communication. As AI is increasingly understood as a communicative subject rather than only a mediator, applied linguistics, language assessment, and AI research are drawn into closer dialogue, and established theory about human communication can take on new life.</p>
+      <p>LLM evaluation has begun to recognize the role of interaction, yet practice still centers on output correctness, and limited transparency in how concepts are operationalized risks measuring proxies rather than the concept of interest. Language assessment has long measured interaction, and because its scores carry consequences, its judgments must remain open to scrutiny. LLM evaluations are similarly consequential.</p>
+      <p>My research brings these measurement practices to LLM evaluation, developing approaches that attend to both interaction and transparency. Real-world adoption of LLMs remains concentrated, and evaluation is an overlooked point of intervention. Transparent, interaction-focused evaluation can build AI literacy, helping people draw on the fuller capabilities of LLMs in their own contexts.</p>
+    </div>
+    <h3 class="subhead">Focus areas</h3>
+    <div class="themes">
+      <div class="theme"><h3>Interaction in evaluation</h3><p>Assessing how models communicate across turns, alongside the correctness of their outputs.</p></div>
+      <div class="theme"><h3>Transparent measurement</h3><p>Making explicit how concepts are systematized and operationalized, so judgments remain open to scrutiny.</p></div>
+      <div class="theme"><h3>Consequential validity</h3><p>Treating evaluations, like test scores, as judgments with consequences for the people they affect.</p></div>
+      <div class="theme"><h3>AI literacy and access</h3><p>Using transparent evaluation to help users draw on LLM capabilities in their own contexts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Projects and publications</span>
+      <h2>Research in <em>practice</em></h2>
+      <p>Each project is listed with the publications it produced. Select a project to see its aims, methods, and full citations.</p>
+    </div>
+    <div class="projects">
+
+      <details class="proj" open>
+        <summary>
+          <span class="label">2023 – 2026</span>
+          <div><span class="pill review">Manuscript in review</span><h3>Validating speaking assessment across test-takers' first languages</h3>
+            <p class="sub">A corpus-based analysis of grammatical complexity in responses to the British Council's Aptis speaking test.</p>
+            <div class="tags"><span class="tag">Learner corpus</span><span class="tag">Spoken complexity</span><span class="tag">CEFR</span><span class="tag">L2</span></div>
+          </div>
+          <span class="toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="proj-body"><div>
+          <div><h4>Overview</h4><p>This project examined complexity features in Aptis speaking performances in relation to CEFR level and L1 background. It is meant to retrospectively inform rating and deepen insights into spoken complex language use.</p></div>
+          <div><h4>Collaborators</h4><p>Jan Langeslag (British Council) and Dana Gablasova (Lancaster University).</p></div>
+          <div><h4>Publication</h4><p class="cite"><b>Weide, J.</b>, Langeslag, J., &amp; Gablasova, D. (2026). Validating high-stakes speaking assessment across test-takers' L1: A data-based analysis of complexity features in the Aptis test. Manuscript in review.</p></div>
+          <div><h4>Presentations</h4>
+            <p class="cite"><b>Weide, J.</b>, Langeslag, J., &amp; Gablasova, D. (2024, July). <em>Validating high-stakes speaking assessment across test-takers' L1: A corpus-based analysis of complexity features in the Aptis test</em>. Paper presented at the 16th Teaching and Language Corpora Conference (TaLC 2024), Manchester Metropolitan University, Manchester, UK.</p>
+            <p class="cite">Langeslag, J., &amp; <b>Weide, J.</b> (2024). <em>Validating high-stakes speaking assessment across CEFR level: A corpus-based analysis of grammatical complexity features in the Aptis test</em>. Paper presented at the FineDesc International SIG meeting, University of Jaén, Spain.</p>
+            <p><a href="#presentations">See photos in Workshops and talks ↓</a></p></div>
+        </div></div>
+      </details>
+
+      <details class="proj">
+        <summary>
+          <span class="label">2023 – 2025</span>
+          <div><span class="pill">2 publications</span><h3>The Language of DALL·E</h3>
+            <p class="sub">A multimethod investigation of how prompt language shapes generative image output, and what that means for language teaching and assessment.</p>
+            <div class="tags"><span class="tag">Generative AI</span><span class="tag">Prompt language</span><span class="tag">English varieties</span><span class="tag">Multimodal assessment</span></div>
+          </div>
+          <span class="toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="proj-body"><div>
+          <div><h4>Overview</h4><p>This project aimed to investigate the utility of DALL·E 2 in language assessment. It did this initially through looking at the form of prompt language needed to realize a writer's intent, how manipulating syntax and lexis changes output across iterations, and how iterative prompting could be operationalized for classroom and assessment activities. Insights were then disseminated in a manner that allowed both language researchers and instructors to benefit from the findings.</p></div>
+          <div><h4>Collaborators</h4><p>Johnathan Cruise (British Council) and Emil Tangham Hazelhurst (Lancaster University).</p></div>
+          <div><h4>Publications</h4>
+            <p class="cite"><b>Weide, J.</b>, Cruise, J., &amp; Hazelhurst, E. T. (2025). Exploring the design and implementation of generative AI–supported activities for multimodal language learning (Ch. 5). In G. C. Zapata (Ed.), <em>Generative AI technologies, multiliteracies, and language education</em>. Routledge. <a href="https://doi.org/10.4324/9781003531685" target="_blank" rel="noopener">doi.org/10.4324/9781003531685</a></p>
+            <p class="cite"><b>Weide, J.</b>, Cruise, J., &amp; Hazelhurst, E. T. (2024). <em>The language of DALL·E: A multimethod approach to technological integration into language classroom and assessment practices</em>. British Council. <a href="https://doi.org/10.57884/3757-7p37" target="_blank" rel="noopener">doi.org/10.57884/3757-7p37</a></p></div>
+          <div><h4>Related</h4><p>The work informed a workshop on multimodal assessment delivered in Bangkok in 2024.</p></div>
+        </div></div>
+      </details>
+
+      <details class="proj">
+        <summary>
+          <span class="label">2023 – 2025</span>
+          <div><span class="pill">Book chapter</span><h3>Interaction in a language assessment MOOC</h3>
+            <p class="sub">Building and analyzing a corpus of educator and participant exchanges in a global assessment literacy course.</p>
+            <div class="tags"><span class="tag">Corpus building</span><span class="tag">Discourse analysis</span><span class="tag">Assessment literacy</span><span class="tag">Teacher education</span></div>
+          </div>
+          <span class="toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="proj-body"><div>
+          <div><h4>Overview</h4><p>I created a corpus from the discussion threads of a British Council assessment literacy MOOC and analyzed how educators and participants interacted, using the findings to identify priorities for teacher training in language assessment.</p></div>
+          <div><h4>Collaborators</h4><p>R. Spiby and C. Westbrook (British Council).</p></div>
+          <div><h4>Publication</h4><p class="cite">Spiby, R., Westbrook, C., &amp; <b>Weide, J.</b> (2025). Investigating educator–participant interaction in a language assessment MOOC. In F. Giraldo &amp; X. Yan (Eds.), <em>Fostering language assessment literacy: Materials, methods, and emerging issues</em> (Ch. 7). Routledge. <a href="https://doi.org/10.4324/9781003483915" target="_blank" rel="noopener">doi.org/10.4324/9781003483915</a></p></div>
+        </div></div>
+      </details>
+
+      <details class="proj">
+        <summary>
+          <span class="label">2023 – 2025</span>
+          <div><h3>Prompt evaluation for an automated spoken dialogue pipeline</h3>
+            <p class="sub">An evaluation framework for LLM prompts driving a spoken dialogue system in L2 Business English assessment.</p>
+            <div class="tags"><span class="tag">LLM evaluation</span><span class="tag">Prompt design</span><span class="tag">Spoken dialogue</span><span class="tag">Business English</span></div>
+          </div>
+          <span class="toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="proj-body"><div>
+          <div><h4>Overview</h4><p>I co-developed a framework for evaluating the prompts behind an automated spoken dialogue pipeline, so that the system's turns could be judged for their suitability in an assessment setting. This work connects assessment validity to the evaluation of conversational AI and anticipates my current focus on interaction.</p></div>
+          <div><h4>Context</h4><p>British Council, English Language Research.</p></div>
+        </div></div>
+      </details>
+
+      <details class="proj">
+        <summary>
+          <span class="label">2022</span>
+          <div><span class="pill quiet">MA dissertation</span><h3>Semantic frames as a measure of test difficulty</h3>
+            <p class="sub">MA dissertation, UCL. Frame semantics and corpus frequency applied to predicting CEFR difficulty.</p>
+            <div class="tags"><span class="tag">FrameNet</span><span class="tag">NLTK</span><span class="tag">BNC · COCA</span><span class="tag">Regression · k-means</span></div>
+          </div>
+          <span class="toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="proj-body"><div>
+          <div><h4>Overview</h4><p>Drawing on FrameNet, the BNC, and COCA through NLTK, I built a dataset of frame-element and lexical-unit counts, frequency scores, and semantic relevance scores, and tested whether these features predict the CEFR level of a concept.</p></div>
+        </div></div>
+      </details>
+
+    </div>
+    <p class="record label">Full publication record: <a href="https://www.orcid.org/0009-0000-3165-913X" target="_blank" rel="noopener">ORCID</a> · <a href="https://scholar.google.com/citations?user=mQfDUVQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></p>
+  </div>
+</section>
+
+<section class="block tint" id="presentations">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Presentations</span>
+      <h2>Workshops and <em>talks</em></h2>
+    </div>
+    <div class="talks">
+
+      <article class="talk">
+        <div class="talk-text">
+          <span class="label">Workshop · November 2024</span>
+          <h3>Using generative AI for multimodal assessment in the classroom</h3>
+          <p class="where">British Council New Directions East Asia · Bangkok, Thailand · with Dr Sha Liu</p>
+          <p>A hands-on workshop for teachers on the theoretical basis for multimodal assessment, AI tools, and practical exercises. Participants learned to design specifications for multimodal integrated tasks, create interactive tasks, and generate automated feedback on task performance.</p>
+        </div>
+        <div class="gallery" data-set="bangkok">
+          <button class="g-wide" data-cap="With Dr Sha Liu before the workshop, Bangkok 2024"><img src="assets/img/bangkok-2024-workshop.jpg" alt="Jordan Weide and Sha Liu in front of the workshop title slide" loading="lazy"></button>
+          <button class="g-side" data-cap="Workshop description and leads in the conference programme"><img src="assets/img/bangkok-2024-programme.jpg" alt="Conference programme page describing the workshop" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="talk">
+        <div class="talk-text">
+          <span class="label">Paper · Presented at two venues</span>
+          <h3>Validating high-stakes speaking assessment across test-takers' L1</h3>
+          <p>A corpus-based analysis of complexity features in the Aptis speaking test.</p>
+          <ol class="venues">
+            <li><strong>16th Teaching and Language Corpora Conference (TaLC 2024)</strong><span>Manchester Metropolitan University, UK · July 2024</span><span>With Jan Langeslag and Dana Gablasova</span></li>
+            <li><strong>FineDesc International SIG Meeting</strong><span>University of Jaén, Spain · 2024</span><span>With Jan Langeslag, presented with a focus on CEFR level</span></li>
+          </ol>
+        </div>
+        <div class="gallery" data-set="talc">
+          <button class="g-wide" data-cap="Presenting the study at TaLC 2024"><img src="assets/img/talc-2024-slide.jpg" alt="Title slide of the Aptis complexity presentation at TaLC 2024" loading="lazy"></button>
+          <button class="g-sm" data-cap="Speaker badge and programme"><img src="assets/img/talc-2024-badge.jpg" alt="TaLC 2024 badge reading Jordan Weide" loading="lazy"></button>
+          <button class="g-sm" data-cap="TaLC 2024, Manchester Metropolitan University"><img src="assets/img/talc-2024-hall.jpg" alt="TaLC 2024 welcome slide in a lecture hall" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="talk">
+        <div class="talk-text">
+          <span class="label">Workshop · October 2023</span>
+          <h3>Using corpora in language teaching and assessment: Developing English speaking skills</h3>
+          <p class="where">British Council New Directions in Language Assessment · Hanoi, Vietnam · with Dr S. Ren</p>
+          <p>A workshop introducing teachers to corpus tools for building speaking skills and informing classroom assessment, delivered at the conference on the future of English language assessment in learning systems.</p>
+        </div>
+        <div class="gallery" data-set="hanoi">
+          <button class="g-wide" data-cap="Workshop participants, Hanoi 2023"><img src="assets/img/hanoi-2023-workshop-group.jpg" alt="Group photo of workshop participants" loading="lazy"></button>
+          <button class="g-sm" data-cap="Leading the workshop"><img src="assets/img/hanoi-2023-workshop-teaching.jpg" alt="Jordan Weide presenting at a projected screen" loading="lazy"></button>
+          <button class="g-sm" data-cap="Teachers working through corpus tasks"><img src="assets/img/hanoi-2023-workshop-room.jpg" alt="Workshop room with participants at tables" loading="lazy"></button>
+        </div>
+      </article>
+
+    </div>
+    <div class="talks-more">
+      <div><span class="label">Presentation · 2020</span><h3>Words are magic: Word access effect on comprehension and recall</h3><p style="font:400 .82rem var(--f-mono);color:var(--muted)">Psi Chi, The International Honor Society in Psychology, Convention · Chicago, Illinois</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="writing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Academic writing</span>
+      <h2>Dissertation and <em>theses</em></h2>
+      <p>Selected full texts can be read on this page.</p>
+    </div>
+    <div class="papers">
+      <article class="paper lead">
+        <div class="stack">
+          <span class="label">MA Applied Linguistics · University College London · 2022</span>
+          <h3>Development of a Semantic Analysis for Assessment Difficulty Measures</h3>
+          <p>This dissertation investigates whether a test difficulty measure can be built from semantic frame theory. Using the BNC, COCA, and FrameNet through NLTK, I derived the number and mean frequency of frame elements and lexical units for each concept, together with semantic relevance scores, and modeled their relationship to CEFR level with multilevel regression, correlation, and k-means clustering. The study outlines how larger datasets and transformer-based models could extend semantic framing into a transferable analysis of language for meaning-based assessment and timely feedback.</p>
+          <div class="foot"><span class="lang">English · Full text available on request</span></div>
+        </div>
+      </article>
+
+      <article class="paper">
+        <span class="label">BA Spanish Language and Literature · Wisconsin Lutheran College · 2021</span>
+        <h3>Lengua Viva: Un estudio de la morfología del idioma Español a través de México y las Filipinas</h3>
+        <p>A study of Spanish as a living language, tracing how it changed through colonial contact with Nahuatl in Mexico and with the languages and cultures of the Philippines.</p>
+        <div class="foot"><span class="lang">Spanish · 24 pages</span><button class="btn" data-doc="lengua-viva">Read thesis</button></div>
+      </article>
+
+      <article class="paper">
+        <span class="label">BS Psychology · Wisconsin Lutheran College · 2020</span>
+        <h3>Words Are Magic: Word Access Effect on Comprehension and Recall</h3>
+        <p>An experiment testing readers' understanding and recall of an idea in relation to their access to the word that names it. It used Scandinavian words and concepts in a short story read by US college students.</p>
+        <div class="foot"><span class="lang">English · 33 pages</span><button class="btn" data-doc="words-are-magic">Read paper</button></div>
+      </article>
+
+      <article class="paper">
+        <span class="label">BS Psychology · Wisconsin Lutheran College · 2019</span>
+        <h3>The Phonetic Make-Up of Names and Their Relationships With BEM Gender Characteristics</h3>
+        <p>A descriptive study of whether soft- and hard-sounding names are associated with feminine and masculine characteristics from the Bem Sex Role Inventory.</p>
+        <div class="foot"><span class="lang">English · 18 pages</span><button class="btn" data-doc="phonetic-names">Read paper</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block tint" id="development">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Professional development</span>
+      <h2>Courses <em>completed</em></h2>
+      <p>Certified courses and summer schools I have completed to build my methods in corpus linguistics, NLP, and generative AI.</p>
+    </div>
+    <div class="courses">
+      <div class="course"><span class="when">Jun 2023</span><div><h3>Corpus Linguistics Summer School</h3><p class="org">Lancaster University</p>
+        <div class="tags"><span class="tag">Corpus building</span><span class="tag">Corpus statistics</span><span class="tag">Wordlists</span><span class="tag">Data-driven learning</span></div></div></div>
+      <div class="course"><span class="when">Mar 2024</span><div><h3>Prompt Engineering Specialization</h3><p class="org">Vanderbilt University · Coursera · three courses</p>
+        <div class="tags"><span class="tag">Prompt engineering</span><span class="tag">GenAI data analysis</span><span class="tag">Trustworthy GenAI</span></div></div></div>
+      <div class="course"><span class="when">Apr 2024</span><div><h3>The Complete Python Bootcamp</h3><p class="org">Udemy</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Data visualization</span><span class="tag">OOP</span><span class="tag">ML modeling</span></div></div></div>
+      <div class="course"><span class="when">Dec 2024</span><div><h3>Natural Language Processing with Python</h3><p class="org">Udemy</p>
+        <div class="tags"><span class="tag">spaCy · NLTK</span><span class="tag">LDA topic modeling</span><span class="tag">Word2Vec</span><span class="tag">Text classification</span></div></div></div>
+    </div>
+
+    <h3 class="subhead">Conferences attended</h3>
+    <div class="events">
+      <div class="event"><button data-cap="EALTA 2023, Helsinki"><img src="assets/img/ealta-2023-group.jpg" alt="EALTA 2023 delegates group photo" loading="lazy"></button><h3>EALTA 2023</h3><p>Helsinki, Finland</p></div>
+      <div class="event"><button data-cap="Main hall, New Directions in Language Assessment 2023, Hanoi"><img src="assets/img/hanoi-2023-hall.jpg" alt="Conference main hall with stage screens" loading="lazy"></button><button hidden data-cap="The British Council team at New Directions 2023"><img src="assets/img/hanoi-2023-team.jpg" alt="Team photo in front of the conference backdrop" loading="lazy"></button><h3>New Directions 2023</h3><p>Hanoi, Vietnam · 2 photos</p></div>
+      <div class="event"><button data-cap="UKALTA Language Testing Forum 2023, hosted by the British Council"><img src="assets/img/ltf-2023-stage.jpg" alt="Speakers on stage at the Language Testing Forum" loading="lazy"></button><h3>Language Testing Forum 2023</h3><p>British Council, UK</p></div>
+      <div class="event"><button data-cap="LTRC 2024, Universität Innsbruck"><img src="assets/img/ltrc-2024-hall.jpg" alt="LTRC 2024 lecture hall" loading="lazy"></button><h3>LTRC 2024</h3><p>Innsbruck, Austria</p></div>
+      <div class="event"><button data-cap="EALTA 2024, Queen's University Belfast"><img src="assets/img/ealta-2024-belfast.jpg" alt="Queen's University Belfast building" loading="lazy"></button><h3>EALTA 2024</h3><p>Belfast, UK</p></div>
+      <div class="event"><button data-cap="Æ Global Summit: Open Problems for AI, London 2024"><img src="assets/img/ae-summit-2024-panel.jpg" alt="Panel on stage at the Global Summit" loading="lazy"></button><h3>Global Summit: Open Problems for AI</h3><p>London, UK</p></div>
+    </div>
+
+    <div class="lists">
+      <div><span class="label">Professional memberships</span>
+        <ul><li>International Language Testing Association (ILTA)</li><li>European Association for Language Testing and Assessment (EALTA)</li><li>British Association for Applied Linguistics (BAAL)</li><li>American Psychological Association (APA)</li><li>Psi Chi, the International Honor Society in Psychology</li></ul></div>
+      <div><span class="label">Honors and scholarships</span>
+        <ul><li>Visiting Scholar, University of Reading</li><li>Visiting Scholar, Lancaster University</li><li>Scholar Athlete Award</li><li>Presidential Scholarship</li><li>Spanish Scholarship</li><li>Racine County Women's Scholarship</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="insights">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Insights</span>
+      <h2>Notes from the <em>field</em></h2>
+    </div>
+    <div class="soon">
+      <span class="label">Coming soon</span>
+      <h3>Short essays on language, assessment, and AI evaluation</h3>
+      <p>This space will collect reflections on developments across applied linguistics and human–AI interaction.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block tint" id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2>About and <em>contact</em></h2></div>
+    <div class="about">
+    <div class="portrait"><img src="assets/img/headshot.jpg" alt="Portrait of Jordan Weide"></div>
+    <div>
+      <div class="facts">
+        <div><span class="label">Languages</span><span>English · Spanish</span></div>
+        <div><span class="label">Based</span><span>Chicago, USA</span></div>
+      </div>
+      <div class="contact">
+        <span class="label">Contact</span>
+        <div class="row"><span class="email" id="email">jordanweide@outlook.com</span><button class="copy" id="copyEmail" type="button">Copy</button></div>
+        <div class="row">
+          <a href="https://www.orcid.org/0009-0000-3165-913X" target="_blank" rel="noopener">ORCID ↗</a>
+          <a href="https://scholar.google.com/citations?user=mQfDUVQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+        </div>
+      </div>
+      <div class="li-callout"><span>My full professional history is on LinkedIn.</span><a href="https://www.linkedin.com/in/jordanweide" target="_blank" rel="noopener">View LinkedIn profile ↗</a></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Jordan Weide</span><a href="#top">Back to top ↑</a></div></footer>
+
+<div class="overlay" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+  <div class="ov-bar"><span class="t" id="readerTitle"></span><span class="c" id="readerCount"></span><button class="ov-close" id="readerClose" type="button">Close</button></div>
+  <div class="reader" id="readerPages"></div>
+</div>
+<div class="overlay" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="ov-bar"><span class="t"></span><button class="ov-nav" id="lbPrev" type="button" aria-label="Previous photo">‹</button><button class="ov-nav" id="lbNext" type="button" aria-label="Next photo">›</button><button class="ov-close" id="lbClose" type="button">Close</button></div>
+  <div class="lb-stage"><img id="lbImg" alt=""></div>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script>
+(function(){
+  var DOCS={
+    "lengua-viva":{t:"Lengua Viva",n:24},
+    "words-are-magic":{t:"Words Are Magic",n:33},
+    "phonetic-names":{t:"The Phonetic Make-Up of Names",n:18}
+  };
+  var reader=document.getElementById('reader'),pages=document.getElementById('readerPages'),last=null;
+  function pad(i){return ('00'+i).slice(-3)}
+  function openDoc(id,trigger){
+    var d=DOCS[id]; if(!d)return; last=trigger;
+    document.getElementById('readerTitle').textContent=d.t;
+    document.getElementById('readerCount').textContent=d.n+' pages';
+    var html='';
+    for(var i=1;i<=d.n;i++){html+='<div class="pg"><img src="papers/'+id+'/p'+pad(i)+'.jpg" alt="Page '+i+'" loading="lazy" draggable="false"></div>'}
+    pages.innerHTML=html; pages.scrollTop=0;
+    reader.hidden=false; document.body.style.overflow='hidden';
+    document.getElementById('readerClose').focus();
+  }
+  function closeDoc(){reader.hidden=true;pages.innerHTML='';document.body.style.overflow='';if(last)last.focus()}
+  document.querySelectorAll('[data-doc]').forEach(function(b){b.addEventListener('click',function(){openDoc(b.getAttribute('data-doc'),b)})});
+  document.getElementById('readerClose').addEventListener('click',closeDoc);
+  reader.addEventListener('contextmenu',function(e){e.preventDefault()});
+  reader.addEventListener('dragstart',function(e){e.preventDefault()});
+
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),set=[],idx=0,lbLast=null;
+  function show(){var b=set[idx];var im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lbCap.textContent=b.getAttribute('data-cap')||''}
+  document.querySelectorAll('.gallery button, .event button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var group=b.closest('.gallery')||b.closest('.events');
+      set=Array.prototype.slice.call(group.querySelectorAll('button'));idx=set.indexOf(b);lbLast=b;
+      show();lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbClose').focus();
+    });
+  });
+  function closeLb(){lb.hidden=true;document.body.style.overflow='';if(lbLast)lbLast.focus()}
+  document.getElementById('lbClose').addEventListener('click',closeLb);
+  document.getElementById('lbPrev').addEventListener('click',function(){idx=(idx-1+set.length)%set.length;show()});
+  document.getElementById('lbNext').addEventListener('click',function(){idx=(idx+1)%set.length;show()});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-stage'))closeLb()});
+  document.addEventListener('keydown',function(e){
+    if(!reader.hidden&&e.key==='Escape')closeDoc();
+    if(!lb.hidden){if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')document.getElementById('lbPrev').click();if(e.key==='ArrowRight')document.getElementById('lbNext').click()}
+  });
+
+  var cb=document.getElementById('copyEmail');
+  cb.addEventListener('click',function(){
+    var t=document.getElementById('email').textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected'}
+    try{navigator.clipboard.writeText(t).then(function(){cb.textContent='Copied'},sel)}catch(e){sel()}
+    setTimeout(function(){cb.textContent='Copy'},2000);
+  });
+})();
+</script>
+
+</body>
+</html>
